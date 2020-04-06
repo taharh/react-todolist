@@ -11,9 +11,9 @@ export default class ToDoList extends Component {
       { id: 203, title: "wash the car", completed: false }
     ],
     sort : true ,
-    mainToDoList : []
+    mainToDoList : [],
   };
-
+  
   async componentDidMount() {
     const {data,status} = await axios.get('https://jsonplaceholder.typicode.com/todos')
     console.log(data,status);
@@ -56,6 +56,15 @@ export default class ToDoList extends Component {
     console.log(toDoList[index]);
   };
 
+  handleEdit = (listItem,newValue) => {
+    const toDoList = this.state.toDoList;
+    const index = this.state.toDoList.findIndex(
+      item => item.id === listItem.id
+    );
+      toDoList[index].title = newValue ;
+      this.setState(toDoList);
+  }
+  
   sortByChecked(key){
     const {toDoList,sort} = this.state
     let newlist = toDoList
@@ -82,7 +91,8 @@ export default class ToDoList extends Component {
       toDoList=this.state.mainToDoList
       this.setState({toDoList})
   }
-  
+
+
   render() {
     return (
       <div className="mt-4">
@@ -115,6 +125,7 @@ export default class ToDoList extends Component {
                 listItem={listItem}
                 handleDone={this.handleDone}
                 handleDelete={this.handleDelete}
+                handleEdit={this.handleEdit}
               />
             ))}
           </ul>
