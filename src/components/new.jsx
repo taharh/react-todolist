@@ -9,13 +9,13 @@ class ToDoItem extends Component {
       edited : false
     }
   }
-  
+      
 
   renderForm(){
     return(
       <form onSubmit={(e) => this.updateItem(e)} >
       <input type="text" ref={(value) => this.input = value} defaultValue={this.props.listItem.title}/>
-      <button type="submit">UPDATE</button>
+      <Button type="submit" color="success">UPDATE</Button>
       </form>
     );
   }
@@ -35,32 +35,32 @@ class ToDoItem extends Component {
       }
   >
   
-  <span>{this.props.listItem.title}</span>
-  <div
-  style = {{
-    position:"absolute",
-    right:30,
-      top:5}}>
+       <span>{this.props.listItem.title}</span>
+    <div
+    style = {{
+      position:"absolute",
+      right:30,
+        top:5}}>
+          <button
+          
+          type="button"
+          className="btn btn-danger"
+          onClick={() => this.props.handleDelete(this.props.listItem)}
+          >
+        DELETE
+      </button>
+
       <button
-      
-      type="button"
-      className="btn btn-danger"
-      onClick={() => this.props.handleDelete(this.props.listItem)}
-      >
-    DELETE
-  </button>
+          type="button"
+          className={this.props.listItem.completed ? "btn btn-info" : "btn btn-secondary"} //{`btn btn-${listitem.done?"info":"primary"}
+          onClick={() => this.props.handleDone(this.props.listItem)}
+        >
+          {this.props.listItem.completed ? "CHECK" : "UNCHECK"}
+        </button>
 
-  <button
-      type="button"
-      className={this.props.listItem.completed ? "btn btn-info" : "btn btn-secondary"} //{`btn btn-${listitem.done?"info":"primary"}
-      onClick={() => this.props.handleDone(this.props.listItem)}
-    >
-      {this.props.listItem.completed ? "CHECK" : "UNCHECK"}
-    </button>
-
-    <Button outline color="success" onClick = {() => this.changeEdit()}>
-        EDIT
-    </Button>
+        <Button outline color="success" onClick = {() => this.changeEdit()}>
+            EDIT
+        </Button>
 
     </div>
   </li>

@@ -1,4 +1,5 @@
 {
+  "homepage": "http://taharh.github.io",
   "name": "learning-app",
   "version": "0.1.0",
   "private": true,
@@ -14,6 +15,8 @@
     "reactstrap": "^8.4.1"
   },
   "scripts": {
+    "deploy" : "gh-pages -d build",
+    "predeploy" : "npm run build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -33,5 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
   }
 }
