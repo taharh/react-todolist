@@ -1,9 +1,10 @@
 {
-  "homepage": "http://taharh.github.io",
+  "homepage": "http://taharh.github.io/react-todolist",
   "name": "learning-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "kind-of": ">=6.0.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
